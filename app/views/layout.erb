@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinatra Wedding Site Project</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amita">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Parisienne&amp;subset=latin-ext">
+    <link rel="stylesheet" href="/cust-side-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="/Navigation-Clean.css">
+    <link rel="stylesheet" href="/Navigation-with-Button.css">
+</head>
+
+<body style="background-image:url(&quot;/PaperSheet002byreflectedstock_qlecw.jpg&quot;);background-repeat:no-repeat;background-size:cover;background-color:rgba(255,255,255,0);">
+    <section class="d-flex flex-column justify-content-between" style="height:100vh;width:100%;background-color:rgba(84,82,35,0.26);">
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid"><a class="navbar-brand swing animated" href="#">Bride &amp; Groom</a><button class="navbar-toggler float-right d-flex justify-content-center" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-2">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="200" style="color:rgba(255,255,255,0.69);">Regisrty</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="300" style="color:rgba(255,255,255,0.69);">Events</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="400" style="color:rgba(255,255,255,0.93);">RSVP</a></li>
+                    </ul><span class="align-content-around navbar-text" id="sign-ins" style="margin:0px;padding:5px;"><button class="btn btn-primary" type="button" data-aos="fade" data-aos-duration="900" data-aos-delay="600" id="sign-up">Sign-up</button><button class="btn btn-primary" type="button" data-aos="fade" data-aos-duration="900" data-aos-delay="700" id="login">Log-in</button></span></div>
+            </div>
+        </nav>
+        <div class="container" id="main-container" style="width:85%;">
+            <div id="main-content" style="background-color:rgba(176,173,150,0.7);">
+                <%= yield %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>TEST</p>
+            </div>
+            <div class="col">
+                <p>TEST</p>
+            </div>
+        </div>
+    </section>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script id="bs-live-reload" data-sseport="63389" data-lastchange="1523576116994" src="/js/livereload.js"></script>
+</body>
+
+</html>
