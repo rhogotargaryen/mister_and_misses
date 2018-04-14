@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_04_13_054132) do
     t.string "desc"
     t.string "start_time"
     t.string "end_time"
+    t.string "location"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_04_13_054132) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "name"
     t.string "email"
     t.string "password_digest"
