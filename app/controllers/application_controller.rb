@@ -1,14 +1,11 @@
-require './config/environment'
-
 class ApplicationController < Sinatra::Base
+  
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "fleet"
   end
-  
-  # USER_LIST = User.all.name
   
   get '/' do 
       erb :home
@@ -19,7 +16,19 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/signup' do
-  #  redirect '/signup' if [params[:name], params[:email], params[:password], params[:username]
+    @error = 
+    params.map do |k,v| 
+      if v == ""
+        k
+      end
+    end.compact
+    if !@error.empty?
+      erb :'/error'
+    elsif !User.find_by_username(params[:username])
+      User.create(params)
+    elsif User.find_by_username(params[:username])
+      erb :'/signup_login'
+    end
   end
   
   get '/login' do
