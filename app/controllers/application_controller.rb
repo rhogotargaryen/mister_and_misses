@@ -35,7 +35,13 @@ class ApplicationController < Sinatra::Base
     erb :login
   end
   
-  post 'login' do
+  post '/login' do
+    "you logged in"
+  end
+  
+  get '/events' do
+    @events = Event.all
+    erb :events
   end
   
 end

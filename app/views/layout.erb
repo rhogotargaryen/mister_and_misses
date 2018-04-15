@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html style="height:100vh;width:100%;">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <title>Sinatra Wedding Site Project</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amita">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Belgrano">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Parisienne&amp;subset=latin-ext">
     <link rel="stylesheet" href="/css/cust-side-menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -16,37 +17,48 @@
     <link rel="stylesheet" href="/css/Navigation-with-Button.css">
 </head>
 
-<body style="background-image:url(&quot;/img/PaperSheet002byreflectedstock_qlecw.jpg&quot;);background-repeat:no-repeat;background-size:cover;background-color:rgba(255,255,255,0);">
-    <section class="d-flex flex-column justify-content-between" style="height:100vh;width:100%;background-color:rgba(84,82,35,0.26);">
-        <nav class="navbar navbar-light navbar-expand-md">
-            <div class="container-fluid"><a class="navbar-brand swing animated" href="#">Mister and Misses</a><button class="navbar-toggler float-right" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-2">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="200" style="color:rgba(255,255,255,0.69);">Regisrty</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="300" style="color:rgba(255,255,255,0.69);">Events</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="400" style="color:rgba(255,255,255,0.93);">RSVP</a></li>
-                    </ul><span class="align-content-around navbar-text" id="sign-ins" style="margin:0px;padding:5px;"><button class="btn btn-primary" type="button" data-aos="fade" data-aos-duration="900" data-aos-delay="600" id="sign-up"><a href='/signup'>Sign-up</a></button><button class="btn btn-primary" type="button" data-aos="fade" data-aos-duration="900" data-aos-delay="700" id="login"><a href='/login'>Log-in</a></button></span></div>
-            </div>
+<body style="background-image:url(&quot;/img/PaperSheet002byreflectedstock_qlecw.jpg&quot;);background-repeat:repeat;background-size:cover;background-color:rgba(255,255,255,0);height:100vh;width:100%;">
+    <section class="d-flex flex-column justify-content-between" style="background-color:rgba(84,82,35,0.26);width:100%;min-height:100vh;">
+        <div>
+            <nav class="navbar navbar-light navbar-expand-md">
+                <div class="container-fluid"><a class="navbar-brand swing animated" href="#" style="font-size:24px;">Mister and Misses</a><button class="navbar-toggler float-right" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navcol-2">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="#" data-aos="fade" data-aos-duration="900" data-aos-delay="200" style="color:rgba(255,255,255,0.69);">Regisrty</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/events" data-aos="fade" data-aos-duration="900" data-aos-delay="300" style="color:rgba(255,255,255,0.69);">Events</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/rsvp" data-aos="fade" data-aos-duration="900" data-aos-delay="400" style="color:rgba(255,255,255,0.93);">RSVP</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/login" data-aos="fade" data-aos-duration="900" data-aos-delay="200" id="login" style="color:rgba(255,255,255,0.69);">Login</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/signup" data-aos="fade" data-aos-duration="900" data-aos-delay="300" id="sign-in">Sign-Up</a></li>
+                        </ul>
+                </div>
+        </div>
         </nav>
-        <div class="container" id="main-container" style="width:85%;">
-            <div id="main-content" style="background-color:rgba(176,173,150,0.7);">
-                
-                <%=yield%>
-                
+        </div>
+        <div class="d-inline flex-column justify-content-center align-items-center align-self-center" id="main-content">
+            <div class="container" id="main-content-cont">
+                <div class="row justify-content-center" id="main_content-row">
+                    <div class="col-auto d-flex flex-column justify-content-center align-content-center" id="main-cont-col"><%= yield %>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <p>TEST</p>
+        <div class="d-flex flex-column" id="footer">
+            <div class="row">
+                <div class="col d-flex justify-content-center footer-links"><a href="#">Link</a></div>
+                <div class="col d-flex justify-content-center footer-links"><a href="#">Link</a></div>
             </div>
-            <div class="col">
-                <p>TEST</p>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <p id="copywright">TEST</p>
+                </div>
             </div>
         </div>
     </section>
     <script src="/js/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
