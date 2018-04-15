@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_13_054132) do
+ActiveRecord::Schema.define(version: 2018_04_15_173253) do
+
+  create_table "couples", force: :cascade do |t|
+    t.string "story"
+    t.string "user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
@@ -24,7 +29,19 @@ ActiveRecord::Schema.define(version: 2018_04_13_054132) do
     t.string "content"
   end
 
-  create_table "user_eventsdo", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
+    t.string "recipient"
+    t.string "content"
+    t.string "user_id"
+  end
+
+  create_table "regs", force: :cascade do |t|
+    t.string "item_name"
+    t.string "item_link"
+    t.string "couple_id"
+  end
+
+  create_table "user_events", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
   end

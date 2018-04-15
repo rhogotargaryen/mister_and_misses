@@ -3,6 +3,11 @@
 <html style="height:100vh;width:100%;">
 
 <head>
+    <STYLE type="text/css">
+      #main-cont-p a:hover { color: white; text-decoration: none }
+      #main-cont-p a { color: rgba(176,173,150) }
+      form {overflow: hidden }
+    </STYLE>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinatra Wedding Site Project</title>
@@ -21,7 +26,7 @@
     <section class="d-flex flex-column justify-content-between" style="background-color:rgba(84,82,35,0.26);width:100%;min-height:100vh;">
         <div>
             <nav class="navbar navbar-light navbar-expand-md">
-                <div class="container-fluid"><a class="navbar-brand swing animated" href="#" style="font-size:24px;">Mister and Misses</a><button class="navbar-toggler float-right" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container-fluid"><a class="navbar-brand pulse animated" data-bs-hover-animate="pulse" href="#" style="font-size:24px;">Mister and Misses</a><button class="navbar-toggler float-right" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div
                         class="collapse navbar-collapse" id="navcol-2">
                         <ul class="nav navbar-nav mr-auto">
@@ -47,12 +52,12 @@
         </div>
         <div class="d-flex flex-column" id="footer">
             <div class="row">
-                <div class="col d-flex justify-content-center footer-links"><a href="#">Link</a></div>
-                <div class="col d-flex justify-content-center footer-links"><a href="#">Link</a></div>
+                <div class="col d-flex justify-content-center footer-links"><span id='main-cont-p'><a href="/story">Our Story</a></div></span>
+                <div class="col d-flex justify-content-center footer-links"><span id='main-cont-p'><a style="color = #fff;" href="/guestbook">Guest Book</a></div></span>
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <p id="copywright">TEST</p>
+                   <span id='main-cont-p'><p id="copyright" style="font-size: .5em; margin-bottom: 0px">copyright rhogodevelopment 2018</p></span>
                 </div>
             </div>
         </div>

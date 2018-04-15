@@ -44,5 +44,8 @@ class ApplicationController < Sinatra::Base
     erb :events
   end
   
+  get '/story' do
+    erb :story
+  end
 end
 
