@@ -35,8 +35,13 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/rsvp" data-aos="fade" data-aos-duration="900" data-aos-delay="400" style="color:rgba(255,255,255,0.93);">RSVP</a></li>
                         </ul>
                         <ul class="nav navbar-nav ml-auto">
+                            <% if !logged_in? %>
                             <li class="nav-item" role="presentation"><a class="nav-link active" href="/login" data-aos="fade" data-aos-duration="900" data-aos-delay="200" id="login" style="color:rgba(255,255,255,0.69);">Login</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/signup" data-aos="fade" data-aos-duration="900" data-aos-delay="300" id="sign-in">Sign-Up</a></li>
+                            <%end%>
+                            <%if logged_in?%>
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/logout" data-aos="fade" data-aos-duration="900" data-aos-delay="200" id="login" style="color:rgba(255,255,255,0.69);">Logout</a></li>
+                            <%end%>
                         </ul>
                 </div>
         </div>
