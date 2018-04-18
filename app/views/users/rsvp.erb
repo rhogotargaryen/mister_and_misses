@@ -1,0 +1,9 @@
+<span id='main-cont-p'>
+    <h2>please select which event you will be attending:</h2>
+    <form method='post' action='/rsvp'>
+        <% @events.each do |x| %>
+        <input type='checkbox' id="<%= x.event_name%>" <%='checked' if @current_user.events.include?(x) %> name='events[]' value='<%= x.id %>'><%= x.event_name%></input></br>
+        <% end %>
+        <input type='submit' value='RSVP'/>
+    </form>
+</span>

@@ -1,6 +1,8 @@
-<span id='main-cont-p'><% @events.each do |x| %>
+<span id='main-cont-p'>
 </br>
-<a href='/events/RSVP'> RSVP for this event</a>
+<a href='/rsvp'> RSVP for events</a>
+</br>
+<% @events.each do |x| %>
 </br>
 <h2> <%= x.event_name %> </h2></br>
 <h3> <%= x.desc %></h3></br>

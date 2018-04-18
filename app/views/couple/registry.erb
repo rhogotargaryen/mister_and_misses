@@ -1,0 +1,11 @@
+<span id='main-cont-p'>
+<a href='/registry/create_reg'>create a new registry item</a>
+</br>
+<% @regs.each do |x| %>
+</br>
+<p><%= x.item_name%><p>
+<a href='https://<%=x.item_link%>' target='_blank'>item purchase link</a></br>
+<a href='/registry/delete_reg/<%=x.id%>'>delete registry</a>
+</br>
+<%end%>
+</span>

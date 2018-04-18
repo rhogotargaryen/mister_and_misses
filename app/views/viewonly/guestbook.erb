@@ -1,0 +1,11 @@
+<span id='main-cont-p'>
+<h2>thank you for sharing in our story, please "sign" your name with a well-wish, blessing, or comment!</h2>
+<a href="/guestbook/create_sig">post your signature</a>
+</br>
+</br>
+<% @guest_sigs.each do |x| %>
+    </br>
+    <p><%=x.content%></p>
+    </br>
+<% end %>
+</span>

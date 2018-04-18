@@ -33,7 +33,7 @@ class EventController < ApplicationController
     if is_admin?
       erb :"#{@@path}/eventcreator"
     else
-      erb :"#{@@path}/events"
+      redirect '/events'
     end
   end
   
@@ -43,6 +43,8 @@ class EventController < ApplicationController
       redirect "/events"
     elsif is_admin?
       erb :"#{@@path}/eventcreator"
+    else
+      redirect "/events"
     end
   end
   
@@ -55,5 +57,24 @@ class EventController < ApplicationController
       redirect "/events"
     end
   end
+  
+  get '/rsvp' do
+    if logged_in?
+      is_admin?
+      @events = Event.all
+      erb :"#{@@path}/rsvp"
+    else
+      redirect '/login'
+    end
+  end
+  
+  post '/rsvp' do
+    if logged_in?  && !is_admin?
+      @params[:events].each do |x|
+        @current_user.events << Event.find(x)
+      end
+    end
+    redirect '/events'
+  end  
   
 end

@@ -1,0 +1,7 @@
+<span id='main-cont-p'>
+<h2>Guest list per event</h2>
+<% @events.each do |x|%>
+<p><%= x.event_name%></p>
+<p> has: <%= x.users.count%> guests</p>
+<%end%>
+</span>

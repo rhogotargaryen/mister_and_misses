@@ -32,6 +32,7 @@ class ApplicationController < Sinatra::Base
       erb :signup
     else
       session[:user_id] = @current_user.id
+      is_admin?
       erb :"#{@@path}/dashboard"
     end
   end
@@ -65,43 +66,69 @@ class ApplicationController < Sinatra::Base
     session.destroy
     erb :home
   end
-  
-  get '/story' do
-    is_admin?
-    @couple_story = Couple.first.story
-    erb :"#{@@oath}/story"
-  end
 
+  get '/guestbook' do
+    @guest_sigs = Post.all
+    is_admin?
+    erb :"#{@@path}/guestbook"
+  end
+  
+  get '/guestbook/delete_sig/:post_id' do
+    if is_admin?
+      @post = Post.find(params[:post_id])
+      Post.delete(params[:post_id])
+    end
+    redirect "/guestbook"
+  end
+  
+  get '/guestbook/create_sig' do
+    is_admin?
+    if logged_in?
+      erb :"#{@@path}/sig_creator"
+    else
+      redirect '/login'
+    end
+  end
+  
+  post '/guestbook' do
+    if is_admin? || logged_in?
+      Couple.first.user.posts << Post.create(content: params[:content])
+      redirect '/guestbook'
+    end
+  end
+    
   helpers do
       
-      def logged_in?
-          !!current_user
-      end
+    def logged_in?
+        !!current_user
+    end
       
-      def log_out
-          session.clear
-          @@path = ""
+    def log_out
+        session.clear
+        @@path = ""
+    end
+    
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+    
+    def is_couple?
+      !!current_user.couple
+    end
+    
+    def is_admin?
+      @@path = "/viewonly"
+      return false if !logged_in?
+      if Couple.first.user_id == session[:user_id].to_s
+        @@path = '/couple'
+        true
+      elsif logged_in?
+        @@path = "/users"
+        false
       end
-      
-      def current_user
-        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-      end
-      
-      def is_couple?
-        !!current_user.couple
-      end
-      
-      def is_admin?
-        @@path = "/viewonly"
-        return false if !logged_in?
-        if Couple.first.user_id == session[:user_id].to_s
-          @@path = '/couple'
-          true
-        elsif logged_in?
-          @@path = "/users"
-          false
-        end
-      end
+    end
+    
   end
+  
 end
 
