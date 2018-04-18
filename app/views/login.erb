@@ -1,4 +1,5 @@
 <span id='main-cont-p'><form method='post' action='/login'></br>
+<%= @error if !!@error %></br>
     <label for='username'>Please enter your username:</label>
     <input name='username' type='text'/></br>
     <label for='password'>Please enter your password:</label>

@@ -1,5 +1,4 @@
 class ApplicationController < Sinatra::Base
-  
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -7,75 +6,102 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "fleet"
   end
   
-  get '/' do 
+  get '/' do
+    if is_admin? || logged_in?
+      erb :"#{@@path}/dashboard"
+    else
       erb :home
+    end
   end
   
   get '/signup' do
-    erb :signup
+    if logged_in?
+      is_admin?
+      erb :"#{@@path}/dashboard"
+    else
+      erb :signup
+    end
   end
   
   post '/signup' do
-    validate
-    if !User.find_by_username(params[:username])
-      User.create(params)
-    elsif User.find_by_username(params[:username])
+    params[:username].downcase!
+    @current_user = User.new(params)
+    if User.find_by_username(@current_user.username)
       erb :signup_login
+    elsif !@current_user.save
+      erb :signup
+    else
+      session[:user_id] = @current_user.id
+      erb :"#{@@path}/dashboard"
     end
-    erb :home
   end
   
   get '/login' do
-    erb :login
+    is_admin?
+    if @current_user
+      erb :"#{@@path}/dashboard"
+    else
+      erb :login
+    end
   end
   
   post '/login' do
-    "you logged in"
+    params[:username].downcase!
+    a = User.find_by_username(params[:username])
+    if a.nil?
+      @error = "please fill in the forms for username and password"
+      erb :login
+    elsif a.authenticate(params[:password])
+      session[:user_id] = a.id
+      is_admin?
+      erb :"#{@@path}/dashboard"
+    else
+      @error = "username or password invalid please try again or signup!"
+      erb :login
+    end
   end
   
-  get '/events' do
-    @events = Event.all
-    erb :events
+  get '/logout' do
+    session.destroy
+    erb :home
   end
   
   get '/story' do
+    is_admin?
     @couple_story = Couple.first.story
-    erb :story
+    erb :"#{@@oath}/story"
   end
-  
+
   helpers do
-    
-    def validate
-      params[:username].downcase!
-      @errors = params.map do |k,v| 
-        k if v == ""  #refractor .blank?
-      end.compact
-      if !@errors.empty?
-        erb :errors
+      
+      def logged_in?
+          !!current_user
       end
-    end
-    
-    def logged_in?
-        !!current_user
-    end
-    
-    def log_out
-        session.destroy
-    end
-    
-    def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
-    
-    def is_admin
-      logged_in?
-      if !!@current_user.couple
-        @@path = "/couple"
-      elsif logged_in?
-        @@path = "/users"
-      else
-        @@path = ""
+      
+      def log_out
+          session.clear
+          @@path = ""
       end
-    end
+      
+      def current_user
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+      end
+      
+      def is_couple?
+        !!current_user.couple
+      end
+      
+      def is_admin?
+        @@path = "/viewonly"
+        return false if !logged_in?
+        if Couple.first.user_id == session[:user_id].to_s
+          @@path = '/couple'
+          true
+        elsif logged_in?
+          @@path = "/users"
+          false
+        end
+      end
   end
 end
+

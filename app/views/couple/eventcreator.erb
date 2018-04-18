@@ -1,0 +1,22 @@
+<span id='main-cont-p'>
+    
+<% if @event %>
+    <% @event.errors.full_messages.each do |x| %>
+    <p> <%= x %></p>
+    <%end%>
+<%end%>
+
+<form method='post' action='/events/event_create'>
+    <label for='event_name'> Event name:</label>
+    <input name='event_name' type='text'></br>
+    <label for='desc'> Event description:</label>
+    <input name='desc' type='text'></br>    
+    <label for='start_time'> Event's start time:</label>
+    <input name='start_time' type='text'></br>
+    <label for='end_time'> Event's end time:</label>
+    <input name='end_time' type='text'></br>    
+    <label for='location'>Event's location:</label>
+    <input name='location' type='text'></br>    
+    <input type='submit' value='Create Event'/>
+</form>
+</span>

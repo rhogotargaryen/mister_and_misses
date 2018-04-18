@@ -1,4 +1,12 @@
-<span id='main-cont-p' class='inp'><form method='post' action='/signup'>
+<span id='main-cont-p' class='inp'>
+
+<% if @current_user %>
+    <% @current_user.errors.full_messages.each do |x| %>
+    <p> <%= x %></p>
+    <%end%>
+<%end%>
+
+<form method='post' action='/signup'>
     <label for='username'>Please enter your username:</label>
     <input name='username' type='text'/></br>
     <label for='password'>Please enter your password:</label>

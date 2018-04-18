@@ -1,5 +1,10 @@
 <span id='main-cont-p'>
-<form method='post' action='/event/event_edit/<%= @event.id%>'>
+<% if @event %>
+    <% @event.errors.full_messages.each do |x| %>
+    <p> <%= x %></p>
+    <%end%>
+<%end%>    
+<form method='post' action='/events/event_edit/<%= @event.id%>'>
     <label for='event_name'>Edit the Event name:</label>
     <input name='event_name' type='text'></br>
     <label for='desc'>Edit the Event description:</label>
