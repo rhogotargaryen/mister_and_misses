@@ -25,12 +25,6 @@ ActiveRecord::Schema.define(version: 2018_04_15_173253) do
     t.string "location"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string "recipient"
-    t.string "content"
-    t.integer "user_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"
