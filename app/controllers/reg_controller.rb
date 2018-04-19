@@ -30,5 +30,12 @@ class RegController < ApplicationController
     end
   end
   
+  get '/registry/delete_reg/:reg_id' do
+    if is_admin?
+      Reg.delete(params[:reg_id])
+    end
+    redirect '/registry'
+  end
+    
 end
   

@@ -6,15 +6,15 @@
 <%end%>    
 <form method='post' action='/events/event_edit/<%= @event.id%>'>
     <label for='event_name'>Edit the Event name:</label>
-    <input name='event_name' type='text'></br>
+    <input name='event_name' type='text' value='<%=@event.event_name%>'></br>
     <label for='desc'>Edit the Event description:</label>
-    <input name='desc' type='text'></br>    
+    <input name='desc' type='text' value='<%=@event.desc%>'></br>    
     <label for='start_time'>Edit the Event's start time:</label>
-    <input name='start_time' type='text'></br>
+    <input name='start_time' type='text' value='<%=@event.start_time%>'></br>
     <label for='end_time'>Edit the Event's end time:</label>
-    <input name='end_time' type='text'></br>    
+    <input name='end_time' type='text' value='<%=@event.end_time%>'></br>    
     <label for='location'>Edit the Event's location:</label>
-    <input name='location' type='text'></br>    
+    <input name='location' type='text'value='<%=@event.location%>'></br>    
     <input type='submit' value='Edit Event'/>
 </form>
 </span>
